@@ -1,7 +1,5 @@
 package wcci.reviewssite;
 
-import java.util.UUID;
-
 public class Review {
 	Long reviewID;
 	String title;
@@ -30,25 +28,27 @@ public class Review {
 		return this.reviewID;
 	}
 
-	public String getReviewTitle() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getTitle() {
+		return title;
+	}
+
+	public String getImgURL() {
+		return imgURL;
 	}
 
 	public String getReviewCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		return reviewCategory;
 	}
 
 	public String getReviewContent() {
-		// TODO Auto-generated method stub
-		return null;
+		return reviewContent;
 	}
 
-	public String getReviewUrl() {
-		// TODO Auto-generated method stub
-		return null;
+	public static long getCounter() {
+		return counter;
 	}
+
+	
 	
 	
 }

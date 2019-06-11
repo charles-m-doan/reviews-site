@@ -2,7 +2,7 @@ package wcci.reviewssite;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.UUID;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -31,5 +31,15 @@ public class ReviewRepositoryTest {
 		repTest.addReview(underTest3);
 		assertEquals(3, repTest.getNumReviews());
 	}
-
+	@Test
+	public void canGetBlandReviews() {
+			Review underTest1= new Review(null, null, "bland", null);
+			ReviewRepository repTest = new ReviewRepository();
+			repTest.addReview(underTest1);
+			ArrayList<Review> matchingReviews= repTest.getReviewsByCategory("bland");
+			assertEquals(1, matchingReviews.size());
+			
+	}
+	
+	
 }
