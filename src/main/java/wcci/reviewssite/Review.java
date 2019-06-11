@@ -3,26 +3,31 @@ package wcci.reviewssite;
 import java.util.UUID;
 
 public class Review {
-	UUID reviewID;
+	Long reviewID;
 	String title;
 	String imgURL;
 	String reviewCategory;
 	String reviewContent;
+	static long counter = 0;
 	
 	
 
 	public Review(String title, String imgURL, String reviewCategory, String reviewContent) {
 		super();
-		this.reviewID = UUID.randomUUID();
+		this.reviewID = getNewId();
 		this.title = title;
 		this.imgURL = imgURL;
 		this.reviewCategory = reviewCategory;
 		this.reviewContent = reviewContent;
 	}
 
-	public String getReviewID() {
-		// TODO Auto-generated method stub
-		return null;
+	private Long getNewId() {
+		counter++;
+		return counter;
+	}
+
+	public Long getReviewID() {
+		return this.reviewID;
 	}
 
 	public String getReviewTitle() {
