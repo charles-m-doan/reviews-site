@@ -1,54 +1,44 @@
 package wcci.reviewssite;
 
 public class Review {
-	Long reviewID;
+	Long id;
 	String title;
-	String imgURL;
-	String reviewCategory;
-	String reviewContent;
+	String imgurl;
+	String category;
+	String content;
 	static long counter = 0;
-	
-	
 
-	public Review(String title, String imgURL, String reviewCategory, String reviewContent) {
+	public Review(long id, String title, String imgurl, String category, String content) {
 		super();
-		this.reviewID = getNewId();
+		this.id = id;
 		this.title = title;
-		this.imgURL = imgURL;
-		this.reviewCategory = reviewCategory;
-		this.reviewContent = reviewContent;
+		this.imgurl = imgurl;
+		this.category = category;
+		this.content = content;
 	}
 
-	private Long getNewId() {
-		counter++;
-		return counter;
-	}
-
-	public Long getReviewID() {
-		return this.reviewID;
+	public Long getId() {
+		return id;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public String getImgURL() {
-		return imgURL;
+	public String getImgurl() {
+		return imgurl;
 	}
 
-	public String getReviewCategory() {
-		return reviewCategory;
+	public String getCategory() {
+		return category;
 	}
 
-	public String getReviewContent() {
-		return reviewContent;
+	public String getContent() {
+		return content;
 	}
 
 	public static long getCounter() {
 		return counter;
 	}
 
-	
-	
-	
 }
