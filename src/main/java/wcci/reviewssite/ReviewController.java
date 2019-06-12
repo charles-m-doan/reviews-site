@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/reviews")
 public class ReviewController {
 
 	ReviewRepository reviews = new ReviewRepository();
@@ -25,7 +26,7 @@ public class ReviewController {
 		return "review";
 	}
 	
-	@RequestMapping("/reviews/")
+	@RequestMapping("/")
 	public String renderReviews(Model model) {
 		reviews.populateRepository();
 
@@ -33,7 +34,7 @@ public class ReviewController {
 		return "reviews";
 	}
 	
-	@RequestMapping("/reviews/{id}")
+	@RequestMapping("/{id}")
 	public String renderSpecificReviewPage(@PathVariable("id") long id, Model model) {
 		reviews.populateRepository();
 		model.addAttribute("review", reviews.getReviewFromMap(id));
