@@ -34,4 +34,15 @@ public class ReviewRepository {
 		return matchingReviews;
 	}
 
+	public void populateRepository() {
+		if(reviews.isEmpty() ) {
+			addReview(new Review(1L, "Scarface", null, "bland", null));
+			addReview(new Review(2L, "Goodfellas", null, "bland", null));
+			addReview(new Review(3L, "Raging Bull", null, "bland", null));
+			addReview(new Review(4L, "Taxi Driver", null, "bland", null));
+			addReview(new Review(5L, "Big Trouble in Little China", null, "bland", null));
+			
+			
+		}
+	}
 }
