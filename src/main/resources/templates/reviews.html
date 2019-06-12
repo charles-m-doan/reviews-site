@@ -9,10 +9,22 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-    <h1 th:text="${review.title}">Review Title</h1>
-    <h3 th:text="${review.imgurl}">Url</h3>
-    <h3 th:text="${review.category}">Category</h3>
-    <h3 th:text="${review.content}">Content</h3>
-    <a href="/reviews/">Back to Reviews</a>
+    
+  
+    <h2 th:each="review: ${reviews}">
+      <a th:text="${review.title}" th:href="|/reviews/${review.id}|">Review Title</a>
+
+    </h2>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   </body>
 </html>
