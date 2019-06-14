@@ -5,8 +5,15 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ReviewRepository {
 	Map<Long, Review> reviews = new HashMap<>();
+
+	public ReviewRepository() {
+		populateRepository();
+	}
 
 	public void addReview(Review review) {
 		reviews.put(review.getId(), review);
@@ -35,14 +42,12 @@ public class ReviewRepository {
 	}
 
 	public void populateRepository() {
-		if(reviews.isEmpty() ) {
+		if (reviews.isEmpty()) {
 			addReview(new Review(1L, "Scarface", null, "bland", null));
 			addReview(new Review(2L, "Goodfellas", null, "bland", null));
 			addReview(new Review(3L, "Raging Bull", null, "bland", null));
 			addReview(new Review(4L, "Taxi Driver", null, "bland", null));
 			addReview(new Review(5L, "Big Trouble in Little China", null, "bland", null));
-			
-			
 		}
 	}
 }
