@@ -1,12 +1,12 @@
 package wcci.reviewssite;
 
 public class Review {
+	
 	Long id;
 	String title;
 	String imgurl;
 	String category;
 	String content;
-	static long counter = 0;
 
 	public Review(long id, String title, String imgurl, String category, String content) {
 		super();
@@ -37,8 +37,6 @@ public class Review {
 		return content;
 	}
 
-	public static long getCounter() {
-		return counter;
-	}
+	
 
 }
