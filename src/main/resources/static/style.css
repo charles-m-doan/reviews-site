@@ -1,7 +1,7 @@
  * {
  box-sizing: border-box;
- margin: 1px;
- padding: 1px;
+ margin: 0;
+ padding: 0;
  border-style: collapse;
  }
  :root{
