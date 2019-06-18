@@ -19,12 +19,14 @@
       </ul>
     </main>
 
-    <div>
-      <article>
-        <h1>Title</h1>
-        <img th:src="@{/images/Placeholder.png}" />
-        <p>(description)</p>
-      </article>
+    <div th:each="review: ${reviews}">
+      <!-- <a th:href="|/review/${review.id}|"> -->
+        <article>
+          <h1 th:text="${review.title}">Title</h1>
+          <img th:src="@{/images/Placeholder.png}" />
+          <p>(description)</p>
+        </article>
+      <!-- </a> -->
     </div>
   </body>
 </html>

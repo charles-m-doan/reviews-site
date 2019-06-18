@@ -13,6 +13,7 @@ public class ReviewRepository {
 
 	public ReviewRepository() {
 		populateRepository();
+		System.out.println(reviews.get(1L));
 	}
 
 	public void addReview(Review review) {

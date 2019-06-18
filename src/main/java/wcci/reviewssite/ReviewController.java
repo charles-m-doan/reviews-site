@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -35,5 +36,11 @@ public class ReviewController {
 	public String renderReviewsNew() {
 		return "write-review";
 	}
+	
+	@PostMapping("add")
+	public String addReview(Long id, String title, String imgurl, String category, String content) {
+		return "redirect:/reviews/all";
+	}
+	
 
 }
