@@ -56,6 +56,33 @@
         color: var(--yellow);
         }
 
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.welcome_block {
+    padding-top: 6rem;
+    margin-left: 0;
+    margin-right: 0;
+
+}
+
+.site_welcome {
+    margin-bottom: 2rem;
+}
+
+.article_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+
+
+
+
+
  @media (min-width:500px) { .header {
      flex-direction: row;
  }
