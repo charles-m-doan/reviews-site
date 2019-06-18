@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/reviews/add" method="POST">
+      <label
+        >Title: <input type="text" name="title" value="ex: Scarface"
+      /></label>
+
+      <label
+        >Title: <input type="text" name="title" value="ex: Scarface"
+      /></label>
+
+      <label>
+        ImageURL:
+        <input
+          type="text"
+          name="imageurl"
+          value="ex: www.something.com/something.png"
+        />
+      </label>
+
+      <label>
+        Category:
+        <input type="text" name="category" value="ex: Gangster movie" />
+      </label>
+
+      <label>
+        Review:
+        <input type="text" name="review" value="Write your review here" />
+      </label>
+
+      <button type="submit">Create New Review</button>
+    </form>
+
+    <form class="book-form" action="/books/add" method="POST">
+      <label class="book-form__field"
+        >Id: <input type="number" name="id" placeholder="Id"
+      /></label>
+      <label class="book-form__field"
+        >Title: <input type="text" name="title" placeholder="Title"
+      /></label>
+      <label class="book-form__field"
+        >Author: <input type="text" name="author"
+      /></label>
+      <label class="book-form__field"
+        >ISBN: <input type="text" name="isbn"
+      /></label>
+      <label class="book-form__field"
+        >Description: <input type="text" name="description"
+      /></label>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
