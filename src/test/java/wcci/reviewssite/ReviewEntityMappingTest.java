@@ -26,7 +26,7 @@ public class ReviewEntityMappingTest {
 
 	@Test
 	public void shouldSaveAndLoadAReview() {
-		Review stone = new Review(1l, "Stone", null, null, null);
+		Review stone = new Review("Stone", null, null, null);
 		entityManager.persist(stone);
 		entityManager.flush();
 

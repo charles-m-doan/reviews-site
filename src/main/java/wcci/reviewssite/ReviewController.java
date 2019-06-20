@@ -1,5 +1,8 @@
 package wcci.reviewssite;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,10 @@ public class ReviewController {
 
 	@Resource
 	ReviewRepository reviews;
+	
+	@Resource
+	ReviewCrudRepo crudRepo;
+	
 
 	@RequestMapping("")
 	public String renderReviews() {
@@ -22,13 +29,13 @@ public class ReviewController {
 
 	@RequestMapping("all")
 	public String renderReviewsAll(Model model) {
-		model.addAttribute("reviews-all", reviews.getReviews());
+		model.addAttribute("reviewsattribute", crudRepo.findAll());
 		return "reviews-all";
 	}
 
 	@RequestMapping("{id}")
-	public String renderReviewsSingle(@PathVariable("id") long id, Model model) {
-		model.addAttribute("single-review", reviews.getReviewFromMap(id));
+	public String renderReviewsSingle(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("single-review", crudRepo.findById(id));
 		return "single-review";
 	}
 
@@ -38,7 +45,11 @@ public class ReviewController {
 	}
 	
 	@PostMapping("add")
-	public String addReview(Long id, String title, String imgurl, String category, String content) {
+	
+	public String addReview(String title, String imgurl, String category, String content) {
+		Review reviewToAdd = new Review(title, imgurl, category, content);
+		
+			crudRepo.save(reviewToAdd);
 		return "redirect:/reviews/all";
 	}
 	
