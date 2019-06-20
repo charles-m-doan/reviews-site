@@ -8,29 +8,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/review")
+@RequestMapping("/reviews")
 public class ReviewController {
 
 	@Resource
 	ReviewRepository reviews;
 
-//	@RequestMapping("/")
-//	public String renderReviewPage(Model model) {
-//		Review review = new Review(1, "This is a review title", "url", "category stuff", "content stuff");
-//		model.addAttribute("review", review);
-//		return "review";
-//	}
-
-	@RequestMapping("/all-reviews")
-	public String renderReviews(Model model) {
-		model.addAttribute("reviews", reviews.getReviews());
-		return "reviews";
+	@RequestMapping("")
+	public String renderReviews() {
+		return "redirect:/reviews/all";
 	}
 
-	@RequestMapping("/{id}")
-	public String renderSpecificReviewPage(@PathVariable("id") long id, Model model) {
-		model.addAttribute("review", reviews.getReviewFromMap(id));
-		return "review";
+	@RequestMapping("all")
+	public String renderReviewsAll(Model model) {
+		model.addAttribute("reviews-all", reviews.getReviews());
+		return "reviews-all";
+	}
+
+	@RequestMapping("{id}")
+	public String renderReviewsSingle(@PathVariable("id") long id, Model model) {
+		model.addAttribute("single-review", reviews.getReviewFromMap(id));
+		return "single-review";
+	}
+
+	@RequestMapping("new")
+	public String renderReviewsNew() {
+		return "write-review";
 	}
 
 }
