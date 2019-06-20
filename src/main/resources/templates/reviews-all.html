@@ -19,14 +19,24 @@
       </ul>
     </main>
 
-    <div th:each="review: ${reviews}">
+    <div th:each="review: ${reviewsattribute}">
       <!-- <a th:href="|/review/${review.id}|"> -->
         <article>
           <h1 th:text="${review.title}">Title</h1>
-          <img th:src="@{/images/Placeholder.png}" />
-          <p>(description)</p>
+          <img th:src="@{${review.imgurl}}" alt="Image missing"/>
+          <p th:text="${review.category}">(Category)</p>
+          <p th:text="${review.content}">(description)</p>
         </article>
       <!-- </a> -->
     </div>
+    <form action="/reviews/add" method="post">
+      <div>
+          <input type="text" placeholder="add a title" name="title">
+          <input type="text" placeholder="add an image url" name="imgurl">
+          <input type="text" placeholder="add an category" name="category">
+          <input type="text" placeholder="add an content" name="content">
+          <button type="submit">Create Review</button>
+      </div>
+    </form>
   </body>
 </html>
