@@ -1,4 +1,4 @@
-package wcci.reviewssite;
+package wcci.reviewssite.controllers;
 
 public class ReviewControllerTest {
 

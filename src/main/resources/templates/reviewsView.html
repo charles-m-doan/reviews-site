@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Browse all reviews</title>
+</head>
+
+<body>
+  <header></header>
+
+  <main>
+    <ul>
+      <li>title</li>
+      <li>Genre</li>
+      <li>Director</li>
+      <li>Date Range</li>
+    </ul>
+  </main>
+
+  <div th:each="review: ${reviewsModel}">
+    <article>
+      <a th:href="|/reviews/${review.id}|">link</a>
+      <h1 th:text="${review.title}">Title</h1>
+      <img th:src="@{${review.imgurl}}" alt="Image missing" />
+      <p th:text="${review.category}">(Category)</p>
+      <p th:text="${review.content}">(description)</p>
+
+    </article>
+  </div>
+  <form action="/reviews/add" method="post">
+    <div>
+      <input type="text" placeholder="add a title" name="title">
+      <input type="text" placeholder="add an image url" name="imgurl">
+      <input type="text" placeholder="add an category" name="category">
+      <input type="text" placeholder="add an content" name="content">
+      <button type="submit">Create Review</button>
+    </div>
+  </form>
+</body>
+
+</html>

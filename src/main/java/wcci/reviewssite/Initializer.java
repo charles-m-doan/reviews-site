@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import wcci.reviewssite.model.Review;
+import wcci.reviewssite.repos.ReviewCrudRepo;
+
 
 @Component
 public class Initializer implements CommandLineRunner {
@@ -14,10 +17,10 @@ public class Initializer implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Review stone = new Review("Stone", "Not Null", "Not Null", "Not Null");
+		Review stone = new Review("Stone", "Not Null", "Not Null");
 		reviewRepo.save(stone);
 		
-		Review roses = new Review("Roses", "Not Null", "Not Null", "Not Null");
+		Review roses = new Review("Roses", "Not Null", "Not Null");
 		reviewRepo.save(roses);
 
 		
