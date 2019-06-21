@@ -63,6 +63,7 @@ main {
 
 .site_welcome {
   margin-bottom: 2rem;
+  margin-left: 2.5rem;
 }
 
 .article_wrapper {
@@ -70,11 +71,18 @@ main {
   flex-direction: column;
   margin: 2rem;
 }
+.footer_class {
+  margin-top: 3rem;
+}
 
 /*styling for single reviews*/
 
 .body_class_sr {
-  background-color: #cfaf70;
+  background-color: #dab876;
+}
+.h2_class {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (min-width: 500px) {

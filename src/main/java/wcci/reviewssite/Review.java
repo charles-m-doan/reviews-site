@@ -3,6 +3,8 @@ package wcci.reviewssite;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 
 @Entity
@@ -11,6 +13,11 @@ public class Review {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@ManyToOne(mappedBy = "review") 
+	
+	
+	
 	
 	String title;
 	String imgurl;
