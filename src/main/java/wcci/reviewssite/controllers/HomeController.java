@@ -1,26 +1,22 @@
-package wcci.reviewssite;
+package wcci.reviewssite.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 
-	public HomeController() {
-	}
-
-	@RequestMapping("")
+	@RequestMapping("/")
 	public String renderRoot(Model model) {
-		model.addAttribute("home");
-		return "home";
+		model.addAttribute("homeModel", "");
+		return "homeView";
 	}
 
 	@RequestMapping("home")
 	public String renderHomePage(Model model) {
-		model.addAttribute("home");
-		return "home";
+		model.addAttribute("homeModel", "");
+		return "homeView";
 	}
 
 }

@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import wcci.reviewssite.model.Review;
+import wcci.reviewssite.repos.ReviewCrudRepo;
+
 import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -26,7 +30,7 @@ public class ReviewEntityMappingTest {
 
 	@Test
 	public void shouldSaveAndLoadAReview() {
-		Review stone = new Review("Stone", null, null, null);
+		Review stone = new Review("Stone", null, null);
 		entityManager.persist(stone);
 		entityManager.flush();
 

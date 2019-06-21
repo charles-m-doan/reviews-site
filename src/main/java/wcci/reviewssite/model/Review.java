@@ -1,38 +1,50 @@
-package wcci.reviewssite;
+package wcci.reviewssite.model;
 
-import java.util.Collection;
-
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
-public class Category {
-		
-	private String name;
-	
+@Entity
+public class Review {
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@OneToMany(mappedBy = "Category")
-	private Collection<Review> reviews;
-	
-	public Long getId()  {
+
+	@ManyToOne
+	private Category category;
+
+	String title;
+	String imgurl;
+	String content;
+
+	public Review(String title, String imgurl, String content) {
+		super();
+		this.title = title;
+		this.imgurl = imgurl;
+		this.content = content;
+	}
+
+	public Long getId() {
 		return id;
 	}
-	
-	public String getName()  {
-		return name;
-		
+
+	protected Review() {
 	}
-	public Category(String name) {
-		this.name = name;
+
+	public String getTitle() {
+		return title;
 	}
-	public Collection<Review> getReview() {
-		return reviews;
+
+	public String getImgurl() {
+		return imgurl;
 	}
-	
-	
+
+	public String getContent() {
+		return content;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -49,7 +61,7 @@ public class Category {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Review other = (Review) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -57,5 +69,5 @@ public class Category {
 			return false;
 		return true;
 	}
-	
+
 }
