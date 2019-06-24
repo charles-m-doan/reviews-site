@@ -8,5 +8,16 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
 </head>
-
+<body>
+    <div class=category-wrapper>
+        <ul th:each="category: ${categories}">
+            <h2 th:text="${category.name}">Action</h2>
+            <li th:each="review: ${category}">
+                <a th:href="|/reviews/${review.id}|">
+                    <h3 th:text="${review.title}">Fear and Loathing in Las Vegas</h3>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
 </html>
