@@ -32,11 +32,9 @@ public class Category {
 	}
 	public String getName() {
 		return name;
-
 	}
 
-
-	public Collection<Review> getReview() {
+	public Collection<Review> getReviews() {
 		return reviews;
 	}
 

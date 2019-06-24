@@ -1,8 +1,5 @@
 package wcci.reviewssite.controllers;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import wcci.reviewssite.model.Review;
+import wcci.reviewssite.repos.CategoryCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
 
 @Controller
@@ -21,6 +19,9 @@ public class ReviewController {
 
 	@Resource
 	ReviewCrudRepo reviewRepo;
+	
+	@Resource
+	CategoryCrudRepo categoryRepo;
 
 	@RequestMapping("")
 	public String renderReviewsAll(Model model) {
@@ -35,16 +36,17 @@ public class ReviewController {
 	}
 
 	@RequestMapping("new")
-	public String renderReviewsNew() {
+	public String renderReviewsNew(Model model) {
+		model.addAttribute("categoriesModel", categoryRepo.findAll());
 		return "newReviewView";
 	}
 	
 	@PostMapping("add")
-	public String addReview(String title, String imgurl, String category, String content) {
-		Review reviewToAdd = new Review(title, imgurl, content, null);
+	public String addReview(String title, String imgurl, String content, String category) {
+		Review reviewToAdd = new Review(title, imgurl, content, categoryRepo.findByName(category));
 		
 			reviewRepo.save(reviewToAdd);
-		return "redirect:/reviews";
+		return "redirect:/reviews/" + reviewToAdd.getId();
 	}
 	
 

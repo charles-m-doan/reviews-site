@@ -7,6 +7,15 @@
     <title>Document</title>
   </head>
   <body>
-    Reviews By Category
+    <ul>
+      <li th:each="review: ${reviewsModel}">
+        <a th:href="|/reviews/${review.id}|">
+          <h3 th:text="${review.title}">The Notebook</h3>
+          <h3 th:text="${review.content}">A good movie!</h3>
+          
+          <img th:src="${review.imgurl}" alt="image missing">
+        </a>
+      </li>
+    </ul>
   </body>
 </html>

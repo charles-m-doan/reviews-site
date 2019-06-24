@@ -21,12 +21,6 @@ public class Initializer implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		Review stone = new Review("Stone", "Not Null", "Not Null", null);
-		reviewRepo.save(stone);
-		
-		Review roses = new Review("Roses", "Not Null", "Not Null", null);
-		reviewRepo.save(roses);
 		
 		Category cat01 = new Category("Comedy");
 		categoryRepo.save(cat01);
@@ -35,7 +29,20 @@ public class Initializer implements CommandLineRunner {
 		categoryRepo.save(cat02);
 		
 		Category cat03 = new Category("Horror");
-		categoryRepo.save(cat03);	
+		categoryRepo.save(cat03);
+		
+		Review stone = new Review("Stone", "Not Null", "Not Null", cat01);
+		reviewRepo.save(stone);
+		
+		Review roses = new Review("Roses", "Not Null", "Not Null", cat02);
+		reviewRepo.save(roses);
+		
+		Review rolling = new Review("Rolling", "Not Null", "Not Null", cat02);
+		reviewRepo.save(rolling);
+		
+		Review guns = new Review("Guns", "Not Null", "Not Null", cat02);
+		reviewRepo.save(guns);
+		
 
 	}
 
