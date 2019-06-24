@@ -13,7 +13,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import wcci.reviewssite.model.Category;
 import wcci.reviewssite.model.Review;
+import wcci.reviewssite.repos.CategoryCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
 
 import static org.assertj.core.api.Assertions.*;
@@ -27,10 +29,13 @@ public class ReviewEntityMappingTest {
 
 	@Autowired
 	private ReviewCrudRepo reviewRepo;
+	
+	@Autowired
+	private CategoryCrudRepo categoryRepo;
 
 	@Test
 	public void shouldSaveAndLoadAReview() {
-		Review stone = new Review("Stone", null, null);
+		Review stone = new Review("Stone", null, null, null);
 		entityManager.persist(stone);
 		entityManager.flush();
 
@@ -38,5 +43,17 @@ public class ReviewEntityMappingTest {
 		assertThat(foundReview.getTitle(), is("Stone"));
 		// or use the AssertJ assertThat
 		assertThat(foundReview.getTitle()).isEqualTo(stone.getTitle());
+	}
+	
+	@Test
+	public void shouldSaveAndLoadCategory() {
+		Category cat = new Category("Sad");
+		entityManager.persist(cat);
+		entityManager.flush();
+		Category foundCategory = categoryRepo.findById(cat.getId()).get();
+		assertThat(foundCategory.getName(), is("Sad"));
+		assertThat(foundCategory.getName()).isEqualTo(cat.getName());
+		
+		
 	}
 }

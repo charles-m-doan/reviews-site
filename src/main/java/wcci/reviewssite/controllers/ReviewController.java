@@ -20,17 +20,17 @@ public class ReviewController {
 
 
 	@Resource
-	ReviewCrudRepo crudRepo;
+	ReviewCrudRepo reviewRepo;
 
 	@RequestMapping("")
 	public String renderReviewsAll(Model model) {
-		model.addAttribute("reviewsModel", crudRepo.findAll());
+		model.addAttribute("reviewsModel", reviewRepo.findAll());
 		return "reviewsView";
 	}
 
 	@RequestMapping("{id}")
 	public String renderReviewsSingle(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("reviewModel", crudRepo.findById(id));
+		model.addAttribute("reviewModel", reviewRepo.findById(id));
 		return "singleReviewView";
 	}
 
@@ -41,9 +41,9 @@ public class ReviewController {
 	
 	@PostMapping("add")
 	public String addReview(String title, String imgurl, String category, String content) {
-		Review reviewToAdd = new Review(title, imgurl, content);
+		Review reviewToAdd = new Review(title, imgurl, content, null);
 		
-			crudRepo.save(reviewToAdd);
+			reviewRepo.save(reviewToAdd);
 		return "redirect:/reviews";
 	}
 	
