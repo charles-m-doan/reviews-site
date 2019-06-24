@@ -19,11 +19,13 @@ public class Review {
 	String imgurl;
 	String content;
 
-	public Review(String title, String imgurl, String content) {
+	public Review(String title, String imgurl, String content, Category category) {
 		super();
 		this.title = title;
 		this.imgurl = imgurl;
 		this.content = content;
+		this.category = category;
+		
 	}
 
 	public Long getId() {
@@ -33,6 +35,9 @@ public class Review {
 	protected Review() {
 	}
 
+	public Category getCategory() {
+		return category;
+	}
 	public String getTitle() {
 		return title;
 	}

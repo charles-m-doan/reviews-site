@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
+	
+	private String name;
 
 	@Id
 	@GeneratedValue
@@ -17,14 +19,13 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 
-	private String name;
+	public Long getId() {
+		return id;
+	}
 
 	protected Category() {
 	}
 	
-	public Long getId() {
-		return id;
-	}
 
 	public Category(String name) {
 		this.name = name;
