@@ -6,4 +6,5 @@ import wcci.reviewssite.model.Category;
 
 public interface CategoryCrudRepo extends CrudRepository<Category, Long> {
 
+	Category findByName(String name);
 }

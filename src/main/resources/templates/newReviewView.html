@@ -8,26 +8,22 @@
   </head>
   <body>
     <form action="/reviews/add" method="POST">
-      <label
-        >Title: <input type="text" name="title" value="ex: Scarface"
-      /></label>
 
-      <label
-        >Title: <input type="text" name="title" value="ex: Scarface"
-      /></label>
+      <label>
+        Title: <input type="text" name="title" value="ex: Scarface"/>
+      </label>
 
       <label>
         ImageURL:
-        <input
-          type="text"
-          name="imageurl"
-          value="ex: www.something.com/something.png"
-        />
+        <input type="text" name="imageurl" value="ex: www.something.com/something.png"/>
       </label>
 
       <label>
         Category:
-        <input type="text" name="category" value="ex: Gangster movie" />
+        <input list="categories" name="category">
+        <datalist id="categories">
+          <option th:each="category: ${categoriesModel}" th:value="${category.name}">
+        </datalist>
       </label>
 
       <label>
