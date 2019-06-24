@@ -30,7 +30,7 @@ public class ReviewController {
 
 	@RequestMapping("{id}")
 	public String renderReviewsSingle(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("reviewModel", reviewRepo.findById(id));
+		model.addAttribute("reviewModel", reviewRepo.findById(id).get());
 		return "singleReviewView";
 	}
 
