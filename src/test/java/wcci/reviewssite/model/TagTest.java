@@ -1,6 +1,6 @@
 package wcci.reviewssite.model;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -12,6 +12,14 @@ public class TagTest {
 	@Test
 	public void tagShouldHaveName() {
 		assertEquals(tagName01, testTag01.getName());
+	}
+
+	@Test
+	public void reviewShouldHaveTag() throws Exception {
+		Tag tag = new Tag("#something");
+		Review review = new Review("Stone", null, null, null);
+		tag.addReview(review);
+		assertTrue(tag.getReviews().contains(review));
 	}
 
 }

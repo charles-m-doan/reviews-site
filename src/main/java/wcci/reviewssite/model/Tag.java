@@ -1,5 +1,6 @@
 package wcci.reviewssite.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -14,8 +15,8 @@ public class Tag {
 	@GeneratedValue
 	private Long id;
 
-	@ManyToMany(mappedBy = "tag")
-	private Collection<Review> reviews;
+	@ManyToMany(mappedBy = "tags")
+	private Collection<Review> reviews = new ArrayList<Review>();
 
 	private String name;
 
@@ -61,5 +62,9 @@ public class Tag {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public void addReview(Review review) {
+		this.reviews.add(review);
 	}
 }

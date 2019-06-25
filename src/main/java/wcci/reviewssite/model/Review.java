@@ -1,8 +1,13 @@
 package wcci.reviewssite.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,6 +20,10 @@ public class Review {
 	@ManyToOne
 	private Category category;
 
+	@ManyToMany
+	@Column(name = "tags")
+	private Collection<Tag> tags = new ArrayList<Tag>();
+
 	String title;
 	String imgurl;
 	String content;
@@ -25,11 +34,14 @@ public class Review {
 		this.imgurl = imgurl;
 		this.content = content;
 		this.category = category;
-		
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public Collection<Tag> getTags() {
+		return tags;
 	}
 
 	protected Review() {
@@ -38,6 +50,7 @@ public class Review {
 	public Category getCategory() {
 		return category;
 	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -73,6 +86,10 @@ public class Review {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
 	}
 
 }

@@ -1,8 +1,8 @@
 package wcci.reviewssite;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.util.Collection;
 
@@ -15,10 +15,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import wcci.reviewssite.model.Category;
 import wcci.reviewssite.model.Review;
+import wcci.reviewssite.model.Tag;
 import wcci.reviewssite.repos.CategoryCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
-
-import static org.assertj.core.api.Assertions.*;
+import wcci.reviewssite.repos.TagCrudRepo;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -29,9 +29,12 @@ public class ReviewEntityMappingTest {
 
 	@Autowired
 	private ReviewCrudRepo reviewRepo;
-	
+
 	@Autowired
 	private CategoryCrudRepo categoryRepo;
+
+	@Autowired
+	private TagCrudRepo tagRepo;
 
 	@Test
 	public void shouldSaveAndLoadAReview() {
@@ -44,7 +47,7 @@ public class ReviewEntityMappingTest {
 		// or use the AssertJ assertThat
 		assertThat(foundReview.getTitle()).isEqualTo(stone.getTitle());
 	}
-	
+
 	@Test
 	public void shouldSaveAndLoadCategory() {
 		Category cat = new Category("Sad");
@@ -53,7 +56,27 @@ public class ReviewEntityMappingTest {
 		Category foundCategory = categoryRepo.findById(cat.getId()).get();
 		assertThat(foundCategory.getName(), is("Sad"));
 		assertThat(foundCategory.getName()).isEqualTo(cat.getName());
-		
-		
+	}
+
+	@Test
+	public void tagShouldHaveReview() throws Exception {
+		Tag tag = new Tag("#something");
+		Category category = new Category("horror");
+		Review review = new Review("Stone", "", "", category);
+
+		review.addTag(tag);
+
+		tagRepo.save(tag);
+		categoryRepo.save(category);
+		reviewRepo.save(review);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Review retrievedReview = reviewRepo.findById(review.getId()).get();
+		assertEquals(1, retrievedReview.getTags().size());
+
+		Tag retrievedTag = tagRepo.findById(tag.getId()).get();
+		assertEquals(2, retrievedTag.getReviews().size());
 	}
 }

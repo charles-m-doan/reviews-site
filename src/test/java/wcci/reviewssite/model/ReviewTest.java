@@ -1,10 +1,12 @@
 package wcci.reviewssite.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Collection;
 
 import org.junit.Test;
-
-import wcci.reviewssite.model.Review;
 
 public class ReviewTest {
 
@@ -12,8 +14,7 @@ public class ReviewTest {
 	public void reviewClassShouldExsist() {
 		Review underTest = new Review(null, null, null, null);
 	}
-	
-	
+
 	@Test
 	public void reviewsShouldHaveAttributes() {
 		Review underTest = new Review(null, null, null, null);
@@ -24,6 +25,16 @@ public class ReviewTest {
 		assertEquals(null, reviewCheck2);
 		assertEquals(null, reviewCheck3);
 		assertEquals(null, reviewCheck5);
-		
 	}
+
+	@Test
+	public void reviewShouldHaveTag() throws Exception {
+		Tag tag = new Tag("#something");
+		System.out.println(tag.getName());
+		Review review = new Review("Stone", null, null, null);
+		System.out.println(review.getTitle());
+		review.addTag(tag);
+		assertTrue(review.getTags().contains(tag));
+	}
+
 }
