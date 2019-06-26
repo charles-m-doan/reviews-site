@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/css/header.css" />
     <link rel="stylesheet" type="text/css" href="/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="/css/categoryview.css" />
     <title>Blighted Potatoes</title>
   </head>
 
@@ -26,12 +27,12 @@
       </header>
 
       <main class="main">
-        <div class="category-wrapper">
-          <ul th:each="category: ${categoriesModel}">
+        <div class="category-card-gallery">
+          <section class="card" th:each="category: ${categoriesModel}">
             <a th:href="|/categories/${category.id}|">
-              <h2 th:text="${category.name}">Action</h2>
+              <h2 class="card__title" th:text="${category.name}">Action</h2>
             </a>
-          </ul>
+          </section>
         </div>
       </main>
 
