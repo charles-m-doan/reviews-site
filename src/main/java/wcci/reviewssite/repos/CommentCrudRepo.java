@@ -3,10 +3,9 @@ package wcci.reviewssite.repos;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import wcci.reviewssite.model.Category;
+import wcci.reviewssite.model.Comment;
 
 @Repository
-public interface CategoryCrudRepo extends CrudRepository<Category, Long> {
+public interface CommentCrudRepo extends CrudRepository<Comment, Long>{
 
-	Category findByName(String name);
 }

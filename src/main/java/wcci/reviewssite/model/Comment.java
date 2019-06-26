@@ -1,46 +1,42 @@
 package wcci.reviewssite.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Tag {
-
+public class Comment {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	@ManyToMany(mappedBy = "tags")
-	private Collection<Review> reviews = new ArrayList<Review>();
-
-	private String name;
-
-	protected Tag() {
-	}
-
-	public Tag(String name) {
-		this.name = name;
-	}
-
-	public Collection<Review> getReviews() {
-		return reviews;
+	
+	@ManyToOne
+	private Review review;
+	
+	@Lob
+	private String content;
+	
+	protected Comment() {	
 	}
 	
-	public void addReview(Review review) {
-		this.reviews.add(review);
-	}
-
-	public String getName() {
-		return name;
+	public Comment(Review reviewToAssign, String contentToAdd) {
+		this.content = contentToAdd;
+		this.review = reviewToAssign;
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public String getContent() {
+		return content;
 	}
 
 	@Override
@@ -59,7 +55,7 @@ public class Tag {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tag other = (Tag) obj;
+		Comment other = (Comment) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -67,6 +63,7 @@ public class Tag {
 			return false;
 		return true;
 	}
-
 	
+	
+
 }

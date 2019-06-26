@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import wcci.reviewssite.model.Comment;
 import wcci.reviewssite.model.Review;
 import wcci.reviewssite.repos.CategoryCrudRepo;
+import wcci.reviewssite.repos.CommentCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
 
 @Controller
@@ -22,6 +24,9 @@ public class ReviewController {
 	
 	@Resource
 	CategoryCrudRepo categoryRepo;
+	
+	@Resource
+	CommentCrudRepo commentRepo;
 
 	@RequestMapping("")
 	public String renderReviewsAll(Model model) {
@@ -47,6 +52,13 @@ public class ReviewController {
 		
 			reviewRepo.save(reviewToAdd);
 		return "redirect:/reviews/" + reviewToAdd.getId();
+	}
+	
+	@PostMapping("add-comment")
+	public String addComment(String content, Long id) {
+		Comment commentToAdd = new Comment(reviewRepo.findById(id).get(), content);
+		commentRepo.save(commentToAdd);
+		return "redirect:/reviews/" + id;
 	}
 	
 

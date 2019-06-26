@@ -7,8 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -21,11 +25,25 @@ public class Review {
 	private Category category;
 
 	@ManyToMany
-	@Column(name = "tags")
+//	@Column(name = "tags")
+//	@JoinTable(
+//		name = "Review_Tags",
+//		joinColumns = { @JoinColumn(name = "review_id") },
+//		inverseJoinColumns = { @JoinColumn(name = "tags_id")}
+//			
+//			)
+	
 	private Collection<Tag> tags = new ArrayList<Tag>();
+	
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments = new ArrayList<Comment>();
 
 	String title;
 	String imgurl;
+	
+	
+	
+	@Lob
 	String content;
 
 	public Review(String title, String imgurl, String content, Category category) {
@@ -42,6 +60,22 @@ public class Review {
 
 	public Collection<Tag> getTags() {
 		return tags;
+	}
+	
+	public Collection<Comment> getComments(){
+		return comments;
+	}
+	
+	public int getCommentsSize() {
+		return comments.size();
+	}
+	
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
+	public void addComment(Comment commentToAdd) {
+		this.comments.add(commentToAdd);
 	}
 
 	protected Review() {
@@ -88,8 +122,5 @@ public class Review {
 		return true;
 	}
 
-	public void addTag(Tag tag) {
-		this.tags.add(tag);
-	}
-
+	
 }
