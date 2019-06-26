@@ -1,0 +1,33 @@
+:root {
+  --white: #f3e9c7;
+  --yellow: #e6d386;
+  --light-brown: #be974a;
+  --dark-brown: #674c37;
+  --brown: #70572f;
+  --green: #3d4a36;
+  --black: #19291e;
+}
+
+html {
+  font: 24px/1;
+  font-family: "Muli", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  min-height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+}
+
+.main {
+  background-color: var(--yellow);
+  color: var(--black);
+  width: 90%;
+  flex: 1 1 auto;
+}
