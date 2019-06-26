@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Muli&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blighted Potatoes</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
-  <title>Blighted Potatoes</title>
-</head>
-
-<body>
-  <header class="header">
-    <h1 class="header_title">Blighted Potatoes</h1>
-    <nav>
-      <ul>
-        <li><a th:href="@{homeView.html}">Home</a></li>
-        <li><a th:href="@{reviewsView.html}">Browse All Reviews</a></li>
-        <li><a href="categoryView.html">Browse By Category</a></li>
-        <li><a href="#">Write a Review</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <div class="welcome_block">
-      <h1 class="site_welcome">Welcome to Blighted Potatoes!</h1>
-      <h2>We have reviews for everything! Not just potatoes!</h2>
-    </div>
-    <div class="article_wrapper">
-      <section class="article_river">
-        <article th:each="review: ${reviews}">
-          <figure>
-            <img src="" alt="article figure">
-          </figure>
-          <div class="media_body">
-            <h3 th:text="${review.title}" class="media_title">The Notebook</h3>
-            <p th:text="${review.content}" class="media_description"> The Notebook is a great drama!</p>
-          </div>
-        </article>
-      </section>
-    </div>
-  </main>
-  <footer>
-    <p>&copy; 2019 The Potato Farmers Inc.</p>
-  </footer>
-</body>
-
+  <body>
+    <header class="header">
+      <h1 class="header_title">Blighted Potatoes</h1>
+      <nav>
+        <ul>
+          <li><a th:href="@{home}">Home</a></li>
+          <li><a th:href="@{reviews}">Browse All Reviews</a></li>
+          <li><a th:href="@{categories}">Browse By Category</a></li>
+          <li><a th:href="@{reviews/new}">Write a Review</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="welcome_block">
+        <h1 class="site_welcome">Welcome to Blighted Potatoes!</h1>
+        <h2>We have reviews for everything! Not just potatoes!</h2>
+      </div>
+      <div class="article_wrapper">
+        <section class="article_river">
+          <article th:each="review: ${reviews}">
+            <figure>
+              <img src="" alt="article figure" />
+            </figure>
+            <div class="media_body">
+              <h3 th:text="${review.title}" class="media_title">
+                The Notebook
+              </h3>
+              <p th:text="${review.content}" class="media_description">
+                The Notebook is a great drama!
+              </p>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2019 The Potato Farmers Inc.</p>
+    </footer>
+  </body>
 </html>
