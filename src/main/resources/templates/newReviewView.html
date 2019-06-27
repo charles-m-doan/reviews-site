@@ -1,69 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="/css/footer.css" />
-    <title>Blighted Potatoes</title>
-  </head>
+	<head>
+		<div th:insert="fragments/head.html :: head"></div>
+	</head>
 
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <h1 class="header__logo">Blighted Potatoes</h1>
-        <nav class="header__nav">
-          <ul class="header__nav__list">
-            <li><a th:href="@{~/home}">Home</a></li>
-            <li><a th:href="@{~/reviews}">Browse All Reviews</a></li>
-            <li><a th:href="@{~/categories}">Browse By Category</a></li>
-            <li><a th:href="@{~/reviews/new}">Write a Review</a></li>
-          </ul>
-        </nav>
-      </header>
+	<body>
+		<div class="wrapper">
+			<header th:replace="fragments/header.html :: header"></header>
 
-      <main class="main">
-        <form action="/reviews/add" method="POST">
-          <label>
-            Title: <input type="text" name="title" value="ex: Scarface" />
-          </label>
+			<main class="main">
+				<form action="/reviews/add" method="POST">
+					<label>
+						Title: <input type="text" name="title" value="ex: Scarface" />
+					</label>
 
-          <label>
-            ImageURL:
-            <input
-              type="text"
-              name="imageurl"
-              value="ex: www.something.com/something.png"
-            />
-          </label>
+					<label>
+						ImageURL:
+						<input
+							type="text"
+							name="imageurl"
+							value="ex: www.something.com/something.png"
+						/>
+					</label>
 
-          <label>
-            Category:
-            <input list="categories" name="category" />
-            <datalist id="categories">
-              <option
-                th:each="category: ${categoriesModel}"
-                th:value="${category.name}"
-              >
-              </option>
-            </datalist>
-          </label>
+					<label>
+						Category:
+						<input list="categories" name="category" />
+						<datalist id="categories">
+							<option
+								th:each="category: ${categoriesModel}"
+								th:value="${category.name}"
+							>
+							</option>
+						</datalist>
+					</label>
 
-          <label>
-            Review:
-            <input type="text" name="review" value="Write your review here" />
-          </label>
+					<label>
+						Review:
+						<input type="text" name="review" value="Write your review here" />
+					</label>
 
-          <button type="submit">Create New Review</button>
-        </form>
-      </main>
+					<button type="submit">Create New Review</button>
+				</form>
+			</main>
 
-      <footer class="footer">
-        <p>&copy; 2019 The Potato Farmers Inc.</p>
-      </footer>
-    </div>
-  </body>
+			<footer th:replace="fragments/footer.html :: footer"></footer>
+		</div>
+	</body>
 </html>

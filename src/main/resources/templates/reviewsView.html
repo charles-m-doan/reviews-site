@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="/css/footer.css" />
-    <link rel="stylesheet" type="text/css" href="/css/reviewsview.css" />
-    <title>Blighted Potatoes</title>
-  </head>
+	<head>
+		<div th:insert="fragments/head.html :: head"></div>
+		<link rel="stylesheet" type="text/css" href="/css/reviewsview.css" />
+	</head>
 
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <h1 class="header__logo">Blighted Potatoes</h1>
-        <nav class="header__nav">
-          <ul class="header__nav__list">
-            <li><a th:href="@{~/home}">Home</a></li>
-            <li><a th:href="@{~/reviews}">Browse All Reviews</a></li>
-            <li><a th:href="@{~/categories}">Browse By Category</a></li>
-            <li><a th:href="@{~/reviews/new}">Write a Review</a></li>
-          </ul>
-        </nav>
-      </header>
+	<body>
+		<div class="wrapper">
+			<header th:replace="fragments/header.html :: header"></header>
 
-      <main class="main">
-        <div class="review-container">
-          <div class="review" th:each="review: ${reviewsModel}">
-            <a th:href="|/reviews/${review.id}|"
-              ><h1 th:text="${review.title}">Title</h1>
-            </a>
-          </div>
-        </div>
-      </main>
+			<main class="main">
+				<div class="review-container">
+					<div class="review" th:each="review: ${reviewsModel}">
+						<a th:href="|/reviews/${review.id}|"
+							><h1 th:text="${review.title}">Title</h1>
+						</a>
+					</div>
+				</div>
+			</main>
 
-      <footer class="footer">
-        <p>&copy; 2019 The Potato Farmers Inc.</p>
-      </footer>
-    </div>
-  </body>
+			<footer th:replace="fragments/footer.html :: footer"></footer>
+		</div>
+	</body>
 </html>
