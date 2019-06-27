@@ -26,16 +26,13 @@ public class Review {
 
 	@ManyToMany
 	private Collection<Tag> tags = new ArrayList<Tag>();
-	
-	
+
 	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments = new ArrayList<Comment>();
 
 	String title;
 	String imgurl;
-	
-	
-	
+
 	@Lob
 	String content;
 
@@ -54,19 +51,21 @@ public class Review {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
-	
-	public Collection<Comment> getComments(){
+
+	public Collection<Comment> getComments() {
 		return comments;
 	}
-	
+
 	public int getCommentsSize() {
 		return comments.size();
 	}
-	
+
 	public void addTag(Tag tag) {
-		this.tags.add(tag);
+		if (!tags.contains(tag)) {
+			this.tags.add(tag);
+		}
 	}
-	
+
 	public void addComment(Comment commentToAdd) {
 		this.comments.add(commentToAdd);
 	}
@@ -115,5 +114,4 @@ public class Review {
 		return true;
 	}
 
-	
 }
