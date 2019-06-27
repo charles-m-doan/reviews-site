@@ -23,7 +23,9 @@ import wcci.reviewssite.controllers.ReviewController;
 import wcci.reviewssite.model.Category;
 import wcci.reviewssite.model.Review;
 import wcci.reviewssite.repos.CategoryCrudRepo;
+import wcci.reviewssite.repos.CommentCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
+import wcci.reviewssite.repos.TagCrudRepo;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ReviewController.class)
@@ -37,6 +39,12 @@ public class ReviewMockMvcTest {
 	
 	@MockBean
 	private CategoryCrudRepo categoryRepo;
+	
+	@MockBean
+	private CommentCrudRepo commentRepo;
+	
+	@MockBean
+	private TagCrudRepo tagRepo;
 	
 	@Mock 
 	private Review reviewOne;
@@ -57,15 +65,7 @@ public class ReviewMockMvcTest {
 	mvc.perform(get("/reviews")).andExpect(view().name(is("reviewsView")));	
 	}
 	
-	@Test
-	public void addCategoryTest() throws Exception {
-		Category categoryToAdd = new Category("good");
-		
-		mvc.perform(post("/reviews/add")).andExpect(status().is3xxRedirection());
-		//will need to recode this after we make a category controller
-		
-		
-	}
+	
 	
 	
 }
