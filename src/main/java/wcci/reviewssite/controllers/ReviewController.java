@@ -1,5 +1,8 @@
 package wcci.reviewssite.controllers;
 
+import java.util.Collection;
+import java.util.Optional;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import wcci.reviewssite.model.Comment;
 import wcci.reviewssite.model.Review;
+import wcci.reviewssite.model.Tag;
 import wcci.reviewssite.repos.CategoryCrudRepo;
 import wcci.reviewssite.repos.CommentCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
@@ -61,9 +65,22 @@ public class ReviewController {
 	
 	@PostMapping("add-comment")
 	public String addComment(String content, Long id) {
-		Comment commentToAdd = new Comment(reviewRepo.findById(id).get(), content);
-		commentRepo.save(commentToAdd);
+		commentRepo.save(new Comment(reviewRepo.findById(id).get(), content));
 		return "redirect:/reviews/" + id;
+	}
+	@PostMapping("add-tag")
+	public String addTag(String name, Long id) throws Exception {
+		Collection<Tag> tags = (Collection<Tag>) tagRepo.findAll();
+		if (!tags.contains(tagRepo.findByName(name))) {
+		reviewRepo.findById(id).get().addTag(tagRepo.save(new Tag(name)));
+		reviewRepo.save(reviewRepo.findById(id).get());
+		}
+		else if(!reviewRepo.findById(id).get().getTags().contains(tagRepo.findByName(name))) {
+		reviewRepo.findById(id).get().addTag(tagRepo.save(tagRepo.findByName(name)));
+		reviewRepo.save(reviewRepo.findById(id).get());
+		}
+		return "redirect:/reviews/" + id;
+		
 	}
 	
 

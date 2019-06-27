@@ -2,6 +2,7 @@ package wcci.reviewssite.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -64,7 +65,10 @@ public class Review {
 	}
 	
 	public void addTag(Tag tag) {
+		if (!tags.contains(tag)) {
 		this.tags.add(tag);
+	}
+		
 	}
 	
 	public void addComment(Comment commentToAdd) {
