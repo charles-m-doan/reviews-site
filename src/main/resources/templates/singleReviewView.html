@@ -1,49 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <div th:insert="fragments/head.html :: head"></div>
-</head>
+  <head>
+    <div th:insert="fragments/head.html :: head"></div>
+    <link rel="stylesheet" type="text/css" href="/css/singleReviewView.css" />
+  </head>
 
 <body>
   <div class="wrapper">
     <header th:replace="fragments/header.html :: header"></header>
 
-    <main class="main">
-      <section>
-        <div>
-          <h2 th:text="${reviewModel.title}">The Notebook</h2>
-          <h3 th:text="${reviewModel.content}">A good movie!</h3>
-          <img th:src="${reviewModel.imgurl}" alt="image missing" />
-          <br />
-          <span th:text="${reviewModel.commentsSize}">7 comments</span>
-          <p th:each="comment : ${reviewModel.comments}" th:text="${comment.content}">
-            Placeholder comment
-          </p>
-        </div>
-        <div>
-          <p>Stephanie Shipley</p>
-          <p>6/14/2019</p>
-        </div>
-        <form action="/reviews/add-comment" method="POST">
-          <label>
-            Comment Body:
-            <input type="text" name="content" value="ex: This review was awesome!" />
-            <input type="hidden" name="id" th:value="${reviewModel.id}" />
-          </label>
-          <button type="submit">Submit Comment</button>
-        </form>
-        <form action="/reviews/add-tag" method="POST">
-          <label>
-            Tag Name
-            <input type="text" name="name" value="ex: tag name!" />
-            <input type="hidden" name="id" th:value="${reviewModel.id}" />
-          </label>
-          <button type="submit">Submit Comment</button>
-        </form>
+      <main class="main">
+        <section>
+          <div class="review-body">
+            <h2 th:text="${reviewModel.title}">The Notebook</h2>
+            <h3 th:text="${reviewModel.content}">A good movie!</h3>
+            <figure class="review-body__figure">
+              <img th:src="@{${reviewModel.imgurl}}" alt="image missing" />
+            </figure>
 
-      </section>
-    </main>
+            <span class="comment-count">
+              <span th:text="${reviewModel.commentsSize}">0</span>
+              Comments
+            </span>
+
+            <p
+              th:each="comment : ${reviewModel.comments}"
+              th:text="${comment.content}"
+            >
+              Placeholder comment
+            </p>
+          </div>
+
+          <ul class="review-body__tags">
+            <li th:each="tag : ${reviewModel.tags}" th:text="${tag.name}">
+              Tag
+            </li>
+          </ul>
+
+          <div class="comment-form">
+            <form action="/reviews/add-comment" method="POST">
+              <label>
+                Comment Body:
+                <input
+                  type="text"
+                  name="content"
+                  value="ex: This review was awesome!"
+                />
+                <input type="hidden" name="id" th:value="${reviewModel.id}" />
+              </label>
+              <button type="submit">Submit Comment</button>
+            </form>
+
+            <form action="/reviews/add-tag" method="POST">
+              <label>
+                Tag Name
+                <input type="text" name="name" value="ex: tag name!" />
+                <input type="hidden" name="id" th:value="${reviewModel.id}" />
+              </label>
+              <button type="submit">Submit Comment</button>
+            </form>
+          </div>
+        </section>
+      </main>
 
     <footer th:replace="fragments/footer.html :: footer"></footer>
   </div>

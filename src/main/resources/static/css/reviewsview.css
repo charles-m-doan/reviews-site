@@ -6,10 +6,21 @@
   flex-grow: 1;
 }
 
+.review {
+  margin: 1rem;
+}
+
 .review h1 {
   font-weight: bold;
   font-size: 2.5rem;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--black);
   -webkit-text-fill-color: var(--yellow);
+}
+
+.review h1:hover {
+  font-size: 2.7rem;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--white);
+  -webkit-text-fill-color: var(--green);
 }

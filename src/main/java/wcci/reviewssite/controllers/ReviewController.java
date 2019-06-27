@@ -23,16 +23,15 @@ import wcci.reviewssite.repos.TagCrudRepo;
 @RequestMapping("/reviews")
 public class ReviewController {
 
-
 	@Resource
 	ReviewCrudRepo reviewRepo;
-	
+
 	@Resource
 	CategoryCrudRepo categoryRepo;
-	
+
 	@Resource
 	CommentCrudRepo commentRepo;
-	
+
 	@Resource
 	TagCrudRepo tagRepo;
 
@@ -54,34 +53,34 @@ public class ReviewController {
 		model.addAttribute("categoriesModel", categoryRepo.findAll());
 		return "newReviewView";
 	}
-	
+
 	@PostMapping("add")
 	public String addReview(String title, String imgurl, String content, String category) {
 		Review reviewToAdd = new Review(title, imgurl, content, categoryRepo.findByName(category));
-		
-			reviewRepo.save(reviewToAdd);
+
+		reviewRepo.save(reviewToAdd);
 		return "redirect:/reviews/" + reviewToAdd.getId();
 	}
-	
+
 	@PostMapping("add-comment")
 	public String addComment(String content, Long id) {
 		commentRepo.save(new Comment(reviewRepo.findById(id).get(), content));
 		return "redirect:/reviews/" + id;
 	}
+  
 	@PostMapping("add-tag")
 	public String addTag(String name, Long id) throws Exception {
 		Collection<Tag> tags = (Collection<Tag>) tagRepo.findAll();
 		if (!tags.contains(tagRepo.findByName(name))) {
-		reviewRepo.findById(id).get().addTag(tagRepo.save(new Tag(name)));
-		reviewRepo.save(reviewRepo.findById(id).get());
-		}
-		else if(!reviewRepo.findById(id).get().getTags().contains(tagRepo.findByName(name))) {
-		reviewRepo.findById(id).get().addTag(tagRepo.save(tagRepo.findByName(name)));
-		reviewRepo.save(reviewRepo.findById(id).get());
+			reviewRepo.findById(id).get().addTag(tagRepo.save(new Tag(name)));
+			reviewRepo.save(reviewRepo.findById(id).get());
+		} else if (!reviewRepo.findById(id).get().getTags().contains(tagRepo.findByName(name))) {
+			reviewRepo.findById(id).get().addTag(tagRepo.save(tagRepo.findByName(name)));
+			reviewRepo.save(reviewRepo.findById(id).get());
 		}
 		return "redirect:/reviews/" + id;
-		
 	}
-	
+
+
 
 }
