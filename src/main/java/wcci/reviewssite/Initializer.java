@@ -115,30 +115,12 @@ public class Initializer implements CommandLineRunner {
 			reviewRepo.save(review);
 		}
 
-		// assignTagsToReviews(4);
 
 		ArrayList<Tag> tags = generateTags();
 		for (Tag tag : tags) {
 			tagRepo.save(tag);
 		}
 
-		//assignTagsToReviews();
-	}
-
-	private void assignTagsToReviews() {
-		Random random = new Random(System.nanoTime());
-		ArrayList<Tag> tags = new ArrayList<Tag>();
-		for (Tag tag : tagRepo.findAll()) {
-			tags.add(tag);
-		}			
-		
-		for (Review review : reviewRepo.findAll()) {
-			int id = random.nextInt(tags.size());
-			Tag tag = tags.get(id);
-			System.out.println(tag.getName());
-			review.addTag(tagRepo.save(tags.get(id)));
-			//reviewRepo.save(review);
-		}
 	}
 
 	private ArrayList<Review> generateReviews(int reviewsToCreate) {
@@ -147,7 +129,7 @@ public class Initializer implements CommandLineRunner {
 			castedCategories.add(category);
 		}
 
-		String imgPath = "main/resources/static/images/Placeholder.png";
+		String imgPath = "https://assets3.thrillist.com/v1/image/2819572/size/tmg-article_tall;jpeg_quality=20.jpg";
 		Random random = new Random(System.nanoTime());
 		ArrayList<Review> reviews = new ArrayList<Review>();
 
@@ -246,17 +228,5 @@ public class Initializer implements CommandLineRunner {
 		tags.add(new Tag("funny"));
 		return tags;
 	}
-
-	public static <T> Collection<T> getCollectionFromIteralbe(Iterable<T> itr) {
-// Create an empty Collection to hold the result 
-		Collection<T> cltn = new ArrayList<T>();
-
-// Iterate through the iterable to 
-// add each element into the collection 
-		for (T t : itr)
-			cltn.add(t);
-
-// Return the converted collection 
-		return cltn;
-	}
+	
 }

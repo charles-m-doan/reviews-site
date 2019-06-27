@@ -13,10 +13,6 @@
             <li th:each="tag: ${tagsModel}">
               <a th:href="|/tags/${tag.id}|">
                 <h2 th:text="${tag.name}">Action</h2>
-                <h1
-                  th:each="review: ${tag.reviews}"
-                  th:text="${review.title}"
-                ></h1>
               </a>
             </li>
           </ul>
