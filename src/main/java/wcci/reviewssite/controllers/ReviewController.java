@@ -13,6 +13,7 @@ import wcci.reviewssite.model.Review;
 import wcci.reviewssite.repos.CategoryCrudRepo;
 import wcci.reviewssite.repos.CommentCrudRepo;
 import wcci.reviewssite.repos.ReviewCrudRepo;
+import wcci.reviewssite.repos.TagCrudRepo;
 
 @Controller
 @RequestMapping("/reviews")
@@ -27,6 +28,9 @@ public class ReviewController {
 	
 	@Resource
 	CommentCrudRepo commentRepo;
+	
+	@Resource
+	TagCrudRepo tagRepo;
 
 	@RequestMapping("")
 	public String renderReviewsAll(Model model) {
@@ -37,6 +41,7 @@ public class ReviewController {
 	@RequestMapping("{id}")
 	public String renderReviewsSingle(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("reviewModel", reviewRepo.findById(id).get());
+		model.addAttribute("tagsModel", tagRepo.findAll());
 		return "singleReviewView";
 	}
 

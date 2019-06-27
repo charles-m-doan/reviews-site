@@ -1,6 +1,6 @@
 package wcci.reviewssite.controllers;
 
-import java.util.Collection;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import wcci.reviewssite.model.Review;
+import wcci.reviewssite.model.Tag;
 import wcci.reviewssite.repos.ReviewCrudRepo;
 import wcci.reviewssite.repos.TagCrudRepo;
 
@@ -30,16 +30,15 @@ public class TagController {
 	}
 	
 	@RequestMapping("{id}")
-	public String renderSingleTag(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("tagModel", tagRepo.findById(id).get());
-		Collection<Review> reviews = tagRepo.findById(id).get().getReviews();
-		
-		//these should print the same thing
-		System.out.println(reviews.size() + "LOOK HERE<-----");
-		System.out.println(tagRepo.findById(id).get().getReviews().size() + "LOOK HERE<-----");
-		
-		model.addAttribute("reviewsModel", (tagRepo.findById(id).get()).getReviews());
-		return "singleTagView";
+	public String renderSingleTag(@PathVariable("id") Long id, Model model) throws Exception {
+		Optional<Tag> tagResult = tagRepo.findById(id);
+		if (tagResult.isPresent()) {
+			Tag tag = tagResult.get();
+			model.addAttribute("tagModel", tag);
+			model.addAttribute("reviewsModel", tag.getReviews());
+			return "singleTagView";
+		}
+		throw new Exception();
 	}
 
 }

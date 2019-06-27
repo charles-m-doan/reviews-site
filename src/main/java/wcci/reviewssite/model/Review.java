@@ -25,15 +25,8 @@ public class Review {
 	private Category category;
 
 	@ManyToMany
-//	@Column(name = "tags")
-//	@JoinTable(
-//		name = "Review_Tags",
-//		joinColumns = { @JoinColumn(name = "review_id") },
-//		inverseJoinColumns = { @JoinColumn(name = "tags_id")}
-//			
-//			)
-	
 	private Collection<Tag> tags = new ArrayList<Tag>();
+	
 	
 	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments = new ArrayList<Comment>();
