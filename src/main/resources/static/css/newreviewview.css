@@ -1,0 +1,14 @@
+.wrapper_class input {
+  line-height: 1.5rem;
+}
+.form_class {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+.wrapper_class {
+  display: flex;
+  flex-grow: 1;
+}

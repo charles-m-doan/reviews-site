@@ -1,0 +1,9 @@
+.content {
+  padding: 3rem;
+  font-size: 4rem;
+  font-style: oblique;
+}
+.ul__class {
+  flex-direction: column-reverse;
+  line-height: 6rem;
+}

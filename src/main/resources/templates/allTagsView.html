@@ -2,21 +2,23 @@
 <html lang="en">
   <head>
     <div th:insert="fragments/head.html :: head"></div>
+    <link rel="stylesheet" type="text/css" href="/css/alltags.css" />
   </head>
   <body>
     <div class="wrapper">
       <header th:replace="fragments/header.html :: header"></header>
 
       <main class="main">
-        <section>
-          <ul>
+        <section class="content">
+          <ul class="ul__class">
             <li th:each="tag: ${tagsModel}">
               <a th:href="|/tags/${tag.id}|">
-                <h2 th:text="${tag.name}">Action</h2>
-                <h1
+                <h1 th:text="${tag.name}">Action</h1>
+                <h2
+                  class="header__two"
                   th:each="review: ${tag.reviews}"
                   th:text="${review.title}"
-                ></h1>
+                ></h2>
               </a>
             </li>
           </ul>
