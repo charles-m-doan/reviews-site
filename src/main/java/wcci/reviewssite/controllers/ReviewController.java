@@ -1,6 +1,7 @@
 package wcci.reviewssite.controllers;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -63,11 +64,10 @@ public class ReviewController {
 
 	@PostMapping("add-comment")
 	public String addComment(String content, Long id) {
-		Comment commentToAdd = new Comment(reviewRepo.findById(id).get(), content);
-		commentRepo.save(commentToAdd);
+		commentRepo.save(new Comment(reviewRepo.findById(id).get(), content));
 		return "redirect:/reviews/" + id;
 	}
-
+  
 	@PostMapping("add-tag")
 	public String addTag(String name, Long id) throws Exception {
 		Collection<Tag> tags = (Collection<Tag>) tagRepo.findAll();
@@ -80,5 +80,7 @@ public class ReviewController {
 		}
 		return "redirect:/reviews/" + id;
 	}
+
+
 
 }
