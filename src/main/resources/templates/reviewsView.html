@@ -1,45 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<div th:insert="fragments/head.html :: head"></div>
+		<link rel="stylesheet" type="text/css" href="/css/reviewsview.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Browse all reviews</title>
-</head>
+	<body>
+		<div class="wrapper">
+			<header th:replace="fragments/header.html :: header"></header>
 
-<body>
-  <header></header>
+			<main class="main">
+				<div class="review-container">
+					<div class="review" th:each="review: ${reviewsModel}">
+						<a th:href="|/reviews/${review.id}|"
+							><h1 th:text="${review.title}">Title</h1>
+						</a>
+					</div>
+				</div>
+			</main>
 
-  <main>
-    <ul>
-      <li>title</li>
-      <li>Genre</li>
-      <li>Director</li>
-      <li>Date Range</li>
-    </ul>
-  </main>
-
-  <div th:each="review: ${reviewsModel}">
-    <article>
-      <a th:href="|/reviews/${review.id}|">link</a>
-      <h1 th:text="${review.title}">Title</h1>
-      <img th:src="@{${review.imgurl}}" alt="Image missing" />
-      <p th:text="${review.category}">(Category)</p>
-      <p th:text="${review.content}">(description)</p>
-
-    </article>
-  </div>
-  <a href="/reviews/new/"><h1>Create a New Review</h1></a>
-  <!-- <form action="/reviews/add" method="post">
-    <div>
-      <input type="text" placeholder="add a title" name="title">
-      <input type="text" placeholder="add an image url" name="imgurl">
-      <input type="text" placeholder="add an category" name="category">
-      <input type="text" placeholder="add an content" name="content"> -->
-      <!-- <button type="submit">Create Review</button> -->
-    <!-- </div>
-  </form> -->
-</body>
-
+			<footer th:replace="fragments/footer.html :: footer"></footer>
+		</div>
+	</body>
 </html>
