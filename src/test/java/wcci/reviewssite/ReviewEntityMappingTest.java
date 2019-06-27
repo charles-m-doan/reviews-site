@@ -66,6 +66,7 @@ public class ReviewEntityMappingTest {
 
 		review.addTag(tag);
 
+
 		tagRepo.save(tag);
 		categoryRepo.save(category);
 		reviewRepo.save(review);
@@ -75,8 +76,15 @@ public class ReviewEntityMappingTest {
 
 		Review retrievedReview = reviewRepo.findById(review.getId()).get();
 		assertEquals(1, retrievedReview.getTags().size());
+		assertEquals(1, reviewRepo.findById(review.getId()).get().getTags().size());
 
 		Tag retrievedTag = tagRepo.findById(tag.getId()).get();
-		assertEquals(2, retrievedTag.getReviews().size());
+		assertEquals(1, retrievedTag.getReviews().size());
+		assertEquals(1, tagRepo.findById(tag.getId()).get().getReviews().size());
+		
+		
+	}
+	@Test
+	public void reviewShouldHaveReview() {
 	}
 }
