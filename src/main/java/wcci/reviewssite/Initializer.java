@@ -106,5 +106,10 @@ public class Initializer implements CommandLineRunner {
 		Comment exactly = new Comment(stone, "Exactly what I thought, great review!");
 		commentRepo.save(exactly);
 	}
+	
+	
+	private void populateWithContent() {
+		
+	}
 
 }
