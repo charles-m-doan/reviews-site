@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <div th:insert="fragments/head.html :: head"></div>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-</head>
+  <body>
+    <div class="wrapper">
+      <header th:replace="fragments/header.html :: header"></header>
 
-<body>
-  <h1>IS THIS SHOWING UP? <span th:text="${tagModel.name}"></span></h1>
-  <ul>
-    <li th:each="review: ${reviewsModel}">
-      <a th:href="|/reviews/${review.id}|"></a>
-      <h3 th:text="${review.title}">The Notebook</h3>
-      <h3 th:text="${review.content}">A good movie!</h3>
-      <img th:src="${review.imgurl}" alt="image missing">
+      <main class="main">
+        <section>
+          <h1>IS THIS SHOWING UP? <span th:text="${tagModel.name}"></span></h1>
+          <ul>
+            <li th:each="review: ${reviewsModel}">
+              <a th:href="|/reviews/${review.id}|"></a>
+              <h3 th:text="${review.title}">The Notebook</h3>
+              <h3 th:text="${review.content}">A good movie!</h3>
+              <img th:src="${review.imgurl}" alt="image missing" />
+            </li>
+          </ul>
+        </section>
+      </main>
 
-    </li>
-  </ul>
-</body>
-
+      <footer th:replace="fragments/footer.html :: footer"></footer>
+    </div>
+  </body>
 </html>
