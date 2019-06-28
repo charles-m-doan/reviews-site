@@ -2,7 +2,11 @@
 <html lang="en">
 	<head>
 		<div th:insert="fragments/head.html :: head"></div>
-		<link rel="stylesheet" type="text/css" href="/css/categoryview.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/css/pages/categoriesView.css"
+		/>
 	</head>
 
 	<body>
@@ -10,13 +14,13 @@
 			<header th:replace="fragments/header.html :: header"></header>
 
 			<main class="main">
-				<div class="category-card-gallery">
-					<section class="card" th:each="category: ${categoriesModel}">
+				<section class="category-card-gallery">
+					<article class="card" th:each="category: ${categoriesModel}">
 						<a th:href="|/categories/${category.id}|">
-							<h2 class="card__title" th:text="${category.name}">Action</h2>
+							<h2 class="card__title" th:text="${category.name}">Category</h2>
 						</a>
-					</section>
-				</div>
+					</article>
+				</section>
 			</main>
 
 			<footer th:replace="fragments/footer.html :: footer"></footer>

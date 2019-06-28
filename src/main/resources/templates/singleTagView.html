@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <div th:insert="fragments/head.html :: head"></div>
-  </head>
+	<head>
+		<div th:insert="fragments/head.html :: head"></div>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/css/pages/singleTagView.css"
+		/>
+	</head>
 
-  <body>
-    <div class="wrapper">
-      <header th:replace="fragments/header.html :: header"></header>
+	<body>
+		<div class="wrapper">
+			<header th:replace="fragments/header.html :: header"></header>
 
-      <main class="main">
-        <section>
-          <h1>IS THIS SHOWING UP? <span th:text="${tagModel.name}"></span></h1>
-          <ul>
-            <li th:each="review: ${reviewsModel}">
-              <a th:href="|/reviews/${review.id}|"></a>
-              <h3 th:text="${review.title}">The Notebook</h3>
-              <h3 th:text="${review.content}">A good movie!</h3>
-              <img th:src="${review.imgurl}" alt="image missing" />
-            </li>
-          </ul>
-        </section>
-      </main>
+			<main class="main">
+				<h1 class="tag-title"><span th:text="${tagModel.name}"></span></h1>
+				<section class="review-container">
+					<div class="review" th:each="review: ${reviewsModel}">
+						<a th:href="|/reviews/${review.id}|"
+							><h1 th:text="${review.title}">Title</h1>
+						</a>
+					</div>
+				</section>
+			</main>
 
-      <footer th:replace="fragments/footer.html :: footer"></footer>
-    </div>
-  </body>
+			<footer th:replace="fragments/footer.html :: footer"></footer>
+		</div>
+	</body>
 </html>

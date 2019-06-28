@@ -1,0 +1,9 @@
+.welcome {
+	padding: 2rem;
+	font-size: 3rem;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}

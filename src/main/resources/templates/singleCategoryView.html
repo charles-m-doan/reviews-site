@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <div th:insert="fragments/head.html :: head"></div>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header th:replace="fragments/header.html :: header"></header>
+	<head>
+		<div th:insert="fragments/head.html :: head"></div>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/css/pages/singleCategoryView.css"
+		/>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header th:replace="fragments/header.html :: header"></header>
 
-      <main class="main">
-        <section>
-          <ul>
-            <li th:each="review: ${reviewsModel}">
-              <a th:href="|/reviews/${review.id}|">
-                <h3 th:text="${review.title}">The Notebook</h3>
-                <h3 th:text="${review.content}">A good movie!</h3>
+			<main class="main">
+				<!-- <section>
+					<ul>
+						<li th:each="review: ${reviewsModel}">
+							<a th:href="|/reviews/${review.id}|">
+								<h3 th:text="${review.title}">The Notebook</h3>
+								<h3 th:text="${review.content}">A good movie!</h3>
 
-                <img th:src="${review.imgurl}" alt="image missing" />
-              </a>
-            </li>
-          </ul>
-        </section>
-      </main>
+								<img th:src="${review.imgurl}" alt="image missing" />
+							</a>
+						</li>
+					</ul>
+        </section> -->
 
-      <footer th:replace="fragments/footer.html :: footer"></footer>
-    </div>
-  </body>
+				<h1 class="category-title">
+					<span th:text="${categoryModel.name}"></span>
+				</h1>
+				<section class="review-container">
+					<div class="review" th:each="review: ${reviewsModel}">
+						<a th:href="|/reviews/${review.id}|"
+							><h1 th:text="${review.title}">Title</h1>
+						</a>
+					</div>
+				</section>
+			</main>
+
+			<footer th:replace="fragments/footer.html :: footer"></footer>
+		</div>
+	</body>
 </html>
