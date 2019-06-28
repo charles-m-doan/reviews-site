@@ -71,18 +71,6 @@ public class AutoPopulator {
 		String content = generateContent();
 		Category category = getRandomCategory();
 
-//		title = generateTitle();
-//		imgURL = DEFAULT_IMG_URL;
-//		content = generateContent();
-//		category = getRandomCategory();
-//		reviews.add(new Review(title, imgURL, content, category));
-//
-//		title = "This is a different title.";
-//		imgURL = DEFAULT_IMG_URL;
-//		content = "This is different content.";
-//		category = getRandomCategory();
-//		reviews.add(new Review(title, imgURL, content, category));
-
 		title = "Taxi Driver";
 		imgURL = "https://i.pinimg.com/originals/23/55/af/2355af0ba1047200f0b6fb2233579a18.jpg";
 		content = "Considered by many to be Martin Scorsese’s masterpiece, Taxi Driver takes a look at the tragic life of Travis Bickle, played by Robert De Niro, an ex-marine loner insomniac turned New York cabby. Travis is a ‘walking contradiction, partly truth and partly fiction.’ For instance Travis despises the scum of the streets of New York, yet he only drives in the worst areas. His worldview is a self-fulfilling prophecy because he only exposes himself to the worst he can find. As strange as his behavior is, Travis Bickle is a character many viewers relate to, some even claiming the story was literally plagiarized from their own life. This review wouldn’t be complete without mentioning De Nero’s most famous scene of his career, in which he turns to a mirror and antagonistically asks ‘You talkin’ to me?’ Then, using a slick quickdraw contraption made from a cabinet slide, he whips out a magnum revolver. But even without this iconic scene, Taxi Driver would still be one of the best movies ever filmed.";
@@ -107,11 +95,35 @@ public class AutoPopulator {
 		category = DEFAULT_CATEGORIES.get(3);
 		reviews.add(new Review(title, imgURL, content, category));
 
-//		title = "";
-//		imgURL = "";
-//		content = "";
-//		category = getRandomCategory();
-//		reviews.add(new Review(title, imgURL, content, category));
+		title = "The Lion King";
+		imgURL = "https://i.pinimg.com/originals/61/44/33/6144337b82f0fce79477620de0556105.gif";
+		content = "When asked to recall the most memorable Disney Animated feature, what comes to my mind first is the Lion King. Why the lion king and not something like Mulan, Snow White, Pinocchio, or Fantasia? While these others are certainly memorable by name, the simplicity of the Lion King's plotline and its homage to Shakesphere's Hamlet make it unforgettable. In short, Scar (Claudius) kills Mufasa (King Hamlet) father and usurps throne, Simba (Prince Hamlet) escapes and comes back years later to take back the throne. The animation style and music, courtesy of none other than Elton John and Hans Zimmer, are as distinct as any other disney animation. However, one of the film's themes is a little misplaced, as Simba seems to have benefited from running away from his problems, at least until divine intervention led him back to his pride. Will the live action adaptation meet the bar this film has set? We'll just have to wait and see… 8/10";
+		category = getRandomCategory();
+		reviews.add(new Review(title, imgURL, content, category));
+
+		title = "The Room";
+		imgURL = "https://i.pinimg.com/originals/83/b6/b2/83b6b297d9ca1d1a52875719dc8bf6ff.jpg";
+		content = "'I did not hit her. It's not true. It's bullshit. I did not hit her! I did not! oh hai mark.' Writer, director, and lead actor Tommy Wiseau is truly a gift to mankind (though maybe not those who worked directly with his frustrating style of directing). The Room is genuinely entertaining to watch, but not in the way films typically are. The silly robotic flow of dialog makes it seem like this movie was written by either AI or aliens. Heck, just the way Tommy speaks both in film and in the wild is enough to make me wonder which planet he came from. Not all of this movie is inadvertently hilarious however, be advised that viewers must also sit through stale re-hashings of the same scenes on repeat, as well as endless stale sex scenes. But if you make it through, you'll be quoting this movie to your friends, who sat through the journey with you, for years to come. -1/10";
+		category = getRandomCategory();
+		reviews.add(new Review(title, imgURL, content, category));
+
+		title = "Monty Python and the Holy Grail";
+		imgURL = "https://i.pinimg.com/564x/f4/63/4c/f4634cbdd971c43ce1eafd2cdbf63565.jpg";
+		content = "Grab your coconuts and holy hand grenades because we're taking a look at Monty Python's most memorable medieval masterpiece. King Arthor's misadventurous quest for the holy grail is filled with the most quotable scenes in comedy from start to finish. These aren't just nonsensical silly-sounding lines one after another, as it deconstructs concepts like Christianity, chivalry, logic and film as a medium of entertainment. For instance instead of painting knights as righteous do-gooders helping those in need, Sir Lancelot massacre's a wedding to save a lad he thought was a lady, poking fun at needlessly violent action scenes in cinema. Even the more boring scenes like Castle Anthrax are redeemed by 4th-wall-breaking-self-deprecation. That being said, not all the scenes are equally funny, falling short of a perfect score, albeit one that is almost fully redeemed by shear charm. 9/10";
+		category = getRandomCategory();
+		reviews.add(new Review(title, imgURL, content, category));
+
+		title = "Dune 1984";
+		imgURL = "https://i.pinimg.com/originals/66/db/f4/66dbf4df2179d98fd82cc9d56aecffdf.jpg";
+		content = "While others had been attempting to adapt Dune into a movie since, 1971, David Lynch was the first director to complete the project, following the failures of Arthur P Jacobs and Aliandro De Rosci. And for a film that took $40 million to make, the special effects aren't even up to snuff with other films in this period, like George Lucas's Star Wars. That being said, there is a sort of visual thematic charm that David Lynch brings to the desert which lends back some points to the film on that front. Technical demand aside, the difficulty of streamlining the dense character relationships in the book is enough to make this a challenging movie to make, and especially to watch. 5/10 ";
+		category = getRandomCategory();
+		reviews.add(new Review(title, imgURL, content, category));
+
+		title = "The Shining";
+		imgURL = "https://i.pinimg.com/originals/81/31/d8/8131d806b65f87198ba22b407900bb0e.jpg";
+		content = "If you've ever felt a little crazy after being cooped up indoors for a little too long, then you might have some insight into the insanity of Jack Torrance in Stanley Kubrick's The Shining. The paranoid delusions and logical disparity from reality in this film make it hard to put this under the horror genre, fitting better as a psychological horror. It's hard to tell how much is actually happening versus how much is the product of Jack's runaway imagination. Host to many iconic scenes, the unexplained river of blood, those creepy twins, 'here's johnny' (a nudge at Johnny Carson's late night show), and more. But a film can't stand on icons alone, and some of the in-between is slow-paced and almost boring. Still, the artistry and feeling of dread Kubrick brought to the screen is enough to make this title a must for any movie nut. 8/10";
+		category = getRandomCategory();
+		reviews.add(new Review(title, imgURL, content, category));
 
 		return reviews;
 		}
