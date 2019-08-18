@@ -1,7 +1,7 @@
 ## Review-Sites Application
 
 ## Description
-You just got home, you’ve been forming a thought all day, and you finally developed it to a point where you can put it into a complete sentence, but no one is around to hear, there is no one to tell, What are you going to do, tell someone tomorrow, well not anymore, with Reviews-site you can develop, post, edit and share your opinion for posterity.
+You just got home. You’ve been forming a thought all day about your favorite movie, Troll 2, and you want to share it with the world.  Sadly, there is no one around to tell. What will you do? Wait until tomorrow!? Never! With the amazing "Blighted Potatoes" reviews site you can post, edit and share your *deeply important* movie opinions for posterity!
 
 ## Functions
 * users can create and update reviews
